@@ -1,0 +1,60 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-3">
+    <h1 class="col-4 offset-4">Login</h1>
+    <div class="col-4 offset-4">
+        <form action="/login" method="POST" class="needs-validation"  novalidate>
+            <div class="mb-3 username">
+                <label for="username" class="form-label">Username</label>
+              <input name="username" id="username" type="text" class="form-control" placeholder="enter username" required/>
+            </div>
+            <!-- <div class="mb-3 password">
+                <label for="password" class="form-label">Password</label>
+              <input name="password" id="password" type="password" class="form-control" placeholder="enter password" required/>
+            </div> -->
+            <div class="mb-3 password">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-group">
+                <input
+                  name="password"
+                  id="password"
+                  type="password"
+                  class="form-control"
+                  placeholder="Enter password"
+                  required
+                />
+                <span class="input-group-text" id="togglePassword" style="cursor: pointer;">
+                  <i class="fa-solid fa-eye bi bi-eye" id="eyeIcon" ></i>
+                </span>
+              </div>
+            </div>
+            <button class="btn btn-success col-12 offset-0">Login</button>
+            <p>Already Have an Account</p>
+        </form>
+        <form action="/signup" method="GET" class="needs-validation"  novalidate>
+          <button  class=" s col-12 offset-0">SignUp</button>
+        </form>
+       
+    </div>
+</div>
+
+
+<script>
+  const passwordInput = document.getElementById("password");
+  const togglePassword = document.getElementById("togglePassword");
+  const eyeIcon = document.getElementById("eyeIcon");
+
+  togglePassword.addEventListener("click", function () {
+    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+    passwordInput.setAttribute("type", type);
+
+    if (type === "password") {
+      eyeIcon.classList.remove("bi-eye-slash");
+      eyeIcon.classList.add("bi-eye");
+    } else {
+      eyeIcon.classList.remove("bi-eye");
+      eyeIcon.classList.add("bi-eye-slash");
+    }
+  });
+</script>
+
